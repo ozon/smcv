@@ -1,0 +1,166 @@
+html {
+  font-size: 100%; /* IE hack */
+}
+
+/* basic setup */
+.mv-treeview {
+  font: 75% 'Lucida Sans Unicode','Lucida Grande',arial,helvetica,sans-serif;
+  color: #293135;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* links */
+.mv-treeview a {
+  color: #293135 ;
+  text-decoration: none;
+}
+
+.mv-treeview a:hover { 
+  text-decoration: none;
+}
+
+
+/* change list style */
+.mv-treeview ul,
+.mv-treeview li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* change input checkbox */
+		.mv-treeview input
+		{
+			position: absolute;
+			opacity: 0;
+			height: 0;
+			/*display: none;*/
+		}
+
+
+
+		.mv-treeview input + label + ul
+		{
+			margin: 0 0 0 22px;
+		}
+
+		.mv-treeview input ~ ul
+		{
+			display: none;
+			height: 0;
+			
+		}
+
+		.mv-treeview label,
+		.mv-treeview label::before
+		{
+			cursor: pointer;
+		}
+
+		.mv-treeview input:disabled + label
+		{
+			cursor: default;
+			opacity: .6;
+		}
+
+		.mv-treeview input:checked:not(:disabled) ~ ul
+		{
+			display: block;
+			opacity: 1;
+			height: auto;
+
+		}
+
+		.mv-treeview label,
+		.mv-treeview .mumble-user,
+		.mv-treeview label::before
+		{
+			background: url("micons.png") no-repeat;
+		}
+
+		.mv-treeview label,
+		.mv-treeview a,
+		.mv-treeview label::before
+		{
+			display: inline-block;
+			height: 16px;
+			line-height: 16px;,
+			vertical-align: middle;
+		}
+
+		.mv-treeview label
+		{
+			background-position: 18px 0;
+		}
+
+		.mv-treeview label::before
+		{
+			content: "";
+			width: 16px;
+			margin: 0 22px 0 0;
+			vertical-align: middle;
+			background-position: 0 -32px;
+		}
+		
+		.mv-treeview .mumble-user
+		{
+			
+			
+			/*margin: 0 22px 0 0;*/
+			vertical-align: middle;
+			background-position: 0 -48px;
+		}
+		.mv-treeview .mumble-user span {
+			padding-left: 22px;
+		}
+
+		.mv-treeview input:checked + label::before
+		{
+			background-position: 0 -16px;
+		}
+
+
+
+
+
+/* no sub */
+.mv-treeview .nosub label:before {
+	background: none;
+	
+}
+
+		/* webkit adjacent element selector bugfix */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .mv-treeview {
+    -webkit-animation: webkit-adjacent-element-selector-bugfix infinite 1s;
+  }
+  @-webkit-keyframes webkit-adjacent-element-selector-bugfix {
+    from {
+      padding: 0;
+
+    }
+    to {
+      padding: 0;
+    }
+  }
+}
+
+
+
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@-ms-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
