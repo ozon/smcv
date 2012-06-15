@@ -2,6 +2,7 @@
 
 // include configurtion
 include 'config.inc.php';
+
 // build Ice connection to murmur
 try {
     require_once 'Ice.php';
@@ -16,7 +17,7 @@ try {
 $server = $meta->getServer($config['mumble_server']);
 $tree = $server->getTree();
 
-
+// helper functions
 function has_Sub($item) {
 	if (count($item->children) > 0 || count($item->users) > 0) {
 //	if ($item->children || $item->users) {
@@ -56,7 +57,6 @@ function pUsers($users) {
 //	echo '<ul>';
 	foreach($users as $user) {
 		echo '<li class="mumble-user"><span>' . $user->name . '</span></li>';
-		//echo '<li ><a href="./">' . $user->name . '</a></li>';
 	}
 //	echo '</ul>';
 
@@ -70,7 +70,8 @@ function getChannel($c) {
 //	if ($c->children || $c->users) {
 	    echo '<ul>';
 	    for ($i =0 ; $i < count($c->children); ++$i) {
-	    //foreach ($c->children as $child) {
+	    // foreach on $c use a wrong channel order
+	    // foreach ($c->children as $child) {
 		    getChannel($c->children[$i]); 
 	    }
 	    pUsers($c->users);
@@ -86,7 +87,7 @@ print '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/h
 echo '<html lang="en-GB">';
 echo '<head>';
 echo '<meta http-equiv="Content-Type" content="text/html;charset=utf-8">';
-echo '<link rel="stylesheet" type="text/css" href="nmv.css" media="screen">';
+echo '<link rel="stylesheet" type="text/css" href="style/default/style.css" media="screen">';
 echo '<title>MumbleViewer without any JavaScript</title>';
 echo '</head><body>';
 echo '<div class="mv-treeview">';

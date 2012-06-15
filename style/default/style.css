@@ -77,7 +77,7 @@ html {
 		.mv-treeview .mumble-user,
 		.mv-treeview label::before
 		{
-			background: url("micons.png") no-repeat;
+			background: url("style/default/icons.png") no-repeat;
 		}
 
 		.mv-treeview label,
