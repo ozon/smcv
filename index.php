@@ -1,17 +1,19 @@
 <?php
 
+// include configurtion
+include 'config.inc.php';
 // build Ice connection to murmur
 try {
     require_once 'Ice.php';
     require_once 'Murmur.php';
     $ICE = Ice_initialize();
-    $meta = Murmur_MetaPrxHelper::checkedCast($ICE->stringToProxy('Meta:tcp -h 127.0.0.1 -p 6502'));
+    $meta = Murmur_MetaPrxHelper::checkedCast($ICE->stringToProxy($config['ice_proxy_string']));
 } catch (Ice_Exception $ex) {
     print_r($ex);
 }
 
 // get server 1
-$server = $meta->getServer(1);
+$server = $meta->getServer($config['mumble_server']);
 $tree = $server->getTree();
 
 
